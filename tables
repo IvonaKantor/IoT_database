@@ -92,13 +92,11 @@ CREATE TABLE Credential (
 -- Configurations Table
 CREATE TABLE Configurations (
                                 id int NOT NULL PRIMARY KEY,
-                                version varchar(20),
-                                creation_date date,
-                                updating_date date,
-                                is_accepted boolean DEFAULT FALSE,
-                                MQTT_broker_url varchar(255),
-                                MQTT_topic varchar(255),
-                                created_at date
+                                version varchar(20) NOT NULL,
+                                created_date date NOT NULL,
+                                sent_date date NOT NULL,
+                                verificated_date date NOT NULL,
+                                accepted boolean DEFAULT FALSE
 );
 
 -- Config_pin Table
