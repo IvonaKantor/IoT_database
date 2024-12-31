@@ -1,0 +1,158 @@
+-- Devices Table
+CREATE TABLE Devices (
+                         id INT NOT NULL PRIMARY KEY,
+                         device_name VARCHAR(20) NOT NULL,
+                         status VARCHAR(20) NOT NULL,
+                         last_updating DATE NOT NULL,
+                         device_type INT NOT NULL CHECK (device_type IN (0, 1, 2)),
+                         serial_number VARCHAR(20) UNIQUE,
+                         location VARCHAR(20) NOT NULL
+);
+
+-- Meta Table
+CREATE TABLE Meta (
+                      device_id INT NOT NULL,
+                      key INT NOT NULL,
+                      value INT,
+                      FOREIGN KEY (device_id) REFERENCES Devices(id)
+);
+
+-- Events Table
+CREATE TABLE Events (
+                        id INT NOT NULL PRIMARY KEY,
+                        device_id INT NOT NULL,
+                        name VARCHAR(20),
+                        value VARCHAR(255),
+                        timestamp DATE,
+                        created_at DATE,
+                        type VARCHAR(20) NOT NULL CHECK (type IN ('info', 'warning', 'error')),
+                        FOREIGN KEY (device_id) REFERENCES Devices(id)
+);
+
+-- Logs Table
+CREATE TABLE Logs (
+                      id INT NOT NULL PRIMARY KEY,
+                      level VARCHAR(20) NOT NULL CHECK (level IN ('debug', 'info', 'warn', 'error')),
+                      timestamp DATE NOT NULL,
+                      message varchar(20)
+);
+
+-- Registry Table
+CREATE TABLE Registry (
+                          id INT NOT NULL PRIMARY KEY,
+                          created_date DATE NOT NULL,
+                          type_logs VARCHAR(20) NOT NULL CHECK (type_logs IN ('XML', 'JSON', 'plain')),
+                          description VARCHAR(255)
+);
+
+-- Settings Table
+CREATE TABLE Settings (
+                          id INT NOT NULL PRIMARY KEY,
+                          device_id INT NOT NULL,
+                          host_name VARCHAR(20),
+                          project VARCHAR(255),
+                          registry VARCHAR(255),
+                          created_date DATE,
+                          acktime_date DATE,
+                          accepted_date DATE,
+                          FOREIGN KEY (device_id) REFERENCES Devices(id)
+);
+
+-- Firmware Table
+CREATE TABLE Firmware (
+                          id INT NOT NULL PRIMARY KEY,
+                          major INT,
+                          minor INT,
+                          patch INT,
+                          released_date DATE
+);
+
+-- DevicesFirmware Table
+CREATE TABLE DevicesFirmware (
+                                 id INT NOT NULL PRIMARY KEY,
+                                 device_id INT NOT NULL,
+                                 firmware_id INT NOT NULL,
+                                 started_date DATE,
+                                 completed_date DATE,
+                                 attempt INT,
+                                 error_message varchar(20),
+                                 FOREIGN KEY (device_id) REFERENCES Devices(id),
+                                 FOREIGN KEY (firmware_id) REFERENCES Firmware(id)
+);
+
+-- Credential Table
+CREATE TABLE Credential (
+                            id INT NOT NULL PRIMARY KEY,
+                            type VARCHAR(20) NOT NULL CHECK (type IN ('ES256', 'RS256')),
+                            public_key VARCHAR(255) NOT NULL,
+                            created_date DATE NOT NULL,
+                            expired_date DATE
+);
+
+-- Configurations Table
+CREATE TABLE Configurations (
+                                id INT NOT NULL PRIMARY KEY,
+                                version VARCHAR(20),
+                                creation_date DATE,
+                                updating_date DATE,
+                                is_accepted BOOLEAN DEFAULT FALSE,
+                                MQTT_broker_url VARCHAR(255),
+                                MQTT_topic VARCHAR(255),
+                                created_at DATE
+);
+
+-- Config_pin Table
+CREATE TABLE Config_pin (
+                            id INT NOT NULL PRIMARY KEY,
+                            config_id INT NOT NULL,
+                            AIO_id INT,
+                            DIO_id INT,
+                            SPI_id INT,
+                            I2C_id INT,
+                            FOREIGN KEY (config_id) REFERENCES Configurations(id),
+                            FOREIGN KEY (AIO_id) REFERENCES AIO(pin),
+                            FOREIGN KEY (DIO_id) REFERENCES DIO(pin),
+                            FOREIGN KEY (SPI_id) REFERENCES SPI(pin),
+                            FOREIGN KEY (I2C_id) REFERENCES I2C(pin)
+);
+
+-- AIO Table
+CREATE TABLE AIO (
+                     pin INT NOT NULL PRIMARY KEY,
+                     mode VARCHAR(20),
+                     period DATE,
+                     pin_number INT NOT NULL,
+                     voltage_range VARCHAR(20),
+                     description varchar(20)
+);
+
+-- DIO Table
+CREATE TABLE DIO (
+                     pin INT NOT NULL PRIMARY KEY,
+                     mode VARCHAR(20),
+                     period DATE,
+                     pin_number INT NOT NULL,
+                     direction VARCHAR(20),
+                     description varchar(20)
+);
+
+-- SPI Table
+CREATE TABLE SPI (
+                     pin INT NOT NULL PRIMARY KEY,
+                     mode VARCHAR(20),
+                     mosi_pin INT NOT NULL,
+                     miso_pin INT NOT NULL,
+                     sclk_pin INT NOT NULL,
+                     cs_pin INT NOT NULL,
+                     description varchar(20)
+);
+
+-- I2C Table
+CREATE TABLE I2C (
+                     pin INT NOT NULL PRIMARY KEY,
+                     mode VARCHAR(20),
+                     period DATE,
+                     sda_pin INT NOT NULL,
+                     scl_pin INT NOT NULL,
+                     description varchar(20)
+);
