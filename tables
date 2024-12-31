@@ -13,7 +13,7 @@ CREATE TABLE Devices (
 CREATE TABLE Meta (
                       device_id int NOT NULL,
                       key int NOT NULL,
-                      value int,
+                      value int NOT NULL,
                       FOREIGN KEY (device_id) REFERENCES Devices(id)
 );
 
