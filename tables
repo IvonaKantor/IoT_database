@@ -15,6 +15,18 @@ DROP TABLE SPI CASCADE CONSTRAINTS;
 DROP TABLE I2C CASCADE CONSTRAINTS;
 
 
+ALTER TABLE META ADD CONSTRAINT " " FOREIGN KEY (device_id) REFERENCES DEVICES(id);
+ALTER TABLE EVENTS ADD CONSTRAINT " " FOREIGN KEY (device_id) REFERENCES DEVICES(id);
+ALTER TABLE SETTINGS ADD CONSTRAINT " " FOREIGN KEY (device_id) REFERENCES DEVICES(id);
+ALTER TABLE DEVICES_FIRMWARE ADD CONSTRAINT " " FOREIGN KEY (device_id) REFERENCES DEVICES(id);
+ALTER TABLE DEVICES_FIRMWARE ADD CONSTRAINT " " FOREIGN KEY (firmware_id) REFERENCES FIRMWARE(id);
+ALTER TABLE CONFIG_PIN ADD CONSTRAINT " " FOREIGN KEY (config_id) REFERENCES CONFIGURATIONS(id);
+ALTER TABLE CONFIG_PIN ADD CONSTRAINT " " FOREIGN KEY (AIO_id) REFERENCES AIO(id);
+ALTER TABLE CONFIG_PIN ADD CONSTRAINT " " FOREIGN KEY (DIO_id) REFERENCES DIO(id);
+ALTER TABLE CONFIG_PIN ADD CONSTRAINT " " FOREIGN KEY (SPI_id) REFERENCES SPI(id);
+ALTER TABLE CONFIG_PIN ADD CONSTRAINT " " FOREIGN KEY (I2C_id) REFERENCES I2C(id);
+
+
 CREATE TABLE DEVICES (
                          id INT NOT NULL PRIMARY KEY,
                          device_name VARCHAR(20) NOT NULL,
@@ -28,8 +40,7 @@ CREATE TABLE DEVICES (
 CREATE TABLE META (
                       device_id INT NOT NULL,
                       key VARCHAR(20) NOT NULL,
-                      value INT,
-                      FOREIGN KEY (device_id) REFERENCES Devices(id)
+                      value INT
 );
 
 CREATE TABLE EVENTS (
@@ -39,8 +50,7 @@ CREATE TABLE EVENTS (
                         value VARCHAR(255),
                         timestamp DATE,
                         created_date DATE,
-                        type VARCHAR(20) NOT NULL check (type IN ('info', 'warning', 'error')),
-                        FOREIGN KEY (device_id) REFERENCES Devices(id)
+                        type VARCHAR(20) NOT NULL check (type IN ('info', 'warning', 'error'))
 );
 
 CREATE TABLE LOGS (
@@ -66,8 +76,7 @@ CREATE TABLE SETTINGS (
                           registry VARCHAR(255),
                           created_date DATE,
                           acktime_date DATE,
-                          accepted_date DATE,
-                          FOREIGN KEY (device_id) REFERENCES Devices(id)
+                          accepted_date DATE
 );
 
 CREATE TABLE FIRMWARE (
@@ -85,9 +94,7 @@ CREATE TABLE DEVICES_FIRMWARE (
                                  started_date DATE,
                                  completed_date DATE,
                                  attempt INT,
-                                 error_message VARCHAR(20),
-                                 FOREIGN KEY (device_id) REFERENCES Devices(id),
-                                 FOREIGN KEY (firmware_id) REFERENCES Firmware(id)
+                                 error_message VARCHAR(20)
 );
 
 CREATE TABLE CREDENTIAL (
@@ -113,12 +120,7 @@ CREATE TABLE CONFIG_PIN (
                             AIO_id INT,
                             DIO_id INT,
                             SPI_id INT,
-                            I2C_id INT,
-                            FOREIGN KEY (config_id) REFERENCES Configurations(id),
-                            FOREIGN KEY (AIO_id) REFERENCES AIO(pin),
-                            FOREIGN KEY (DIO_id) REFERENCES DIO(pin),
-                            FOREIGN KEY (SPI_id) REFERENCES SPI(pin),
-                            FOREIGN KEY (I2C_id) REFERENCES I2C(pin)
+                            I2C_id INT
 );
 
 CREATE TABLE AIO (
