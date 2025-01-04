@@ -97,8 +97,8 @@ CREATE TABLE configurations (
                                 id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                                 version VARCHAR(20) NOT NULL,
                                 created_date DATE NOT NULL,
-                                sent_date DATE NOT NULL,
-                                verificated_date DATE NOT NULL,
+                                sent_date DATE,
+                                verificated_date DATE,
                                 accepted boolean DEFAULT FALSE
 );
 
