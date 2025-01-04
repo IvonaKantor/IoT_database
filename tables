@@ -90,7 +90,7 @@ CREATE TABLE CREDENTIAL (
                             type VARCHAR(20) NOT NULL CHECK (type IN ('ES256', 'RS256')),
                             public_key VARCHAR(255) NOT NULL,
                             created_date DATE NOT NULL,
-                            expired_date DATE
+                            expired_date DATE NOT NULL
 );
 
 CREATE TABLE CONFIGURATIONS (
