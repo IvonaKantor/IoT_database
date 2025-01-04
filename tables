@@ -16,15 +16,13 @@ DROP TABLE I2C CASCADE CONSTRAINTS;
 
 
 CREATE TABLE DEVICES (
-                         id INT NOT NULL,
+                         id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                          device_name VARCHAR(20) NOT NULL,
                          status VARCHAR(20) NOT NULL,
                          last_updating DATE NOT NULL,
                          device_type INT NOT NULL check (DEVICE_TYPE IN (0, 1, 2)),
                          serial_number VARCHAR(20) UNIQUE,
-                         location VARCHAR(20) NOT NULL,
-                         CONSTRAINT "DEV_ID_PK" PRIMARY KEY (id)
-                         USING INDEX ENABLE
+                         location VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE META (
@@ -34,146 +32,120 @@ CREATE TABLE META (
 );
 
 CREATE TABLE EVENTS (
-                        id INT NOT NULL,
+                        id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                         device_id INT NOT NULL,
                         name VARCHAR(20),
                         value VARCHAR(255),
                         timestamp DATE,
                         created_date DATE,
-                        type VARCHAR(20) NOT NULL check (type IN ('info', 'warning', 'error')),
-                        CONSTRAINT "EVE_ID_PK" PRIMARY KEY (id)
-                        USING INDEX ENABLE
+                        type VARCHAR(20) NOT NULL check (type IN ('info', 'warning', 'error'))
 );
 
 CREATE TABLE LOGS (
-                      id INT NOT NULL,
+                      id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                       "level" VARCHAR(20) NOT NULL check ("level" IN ('debug', 'info', 'warn', 'error')),
                       timestamp DATE NOT NULL,
-                      message VARCHAR(20),
-                      CONSTRAINT "LOG_ID_PK" PRIMARY KEY (id)
-                      USING INDEX ENABLE
+                      message VARCHAR(20)
 );
 
 CREATE TABLE REGISTRY (
-                          id INT NOT NULL,
+                          id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                           name VARCHAR(20) NOT NULL,
                           created_date DATE NOT NULL,
                           type_logs VARCHAR(20) NOT NULL check (type_logs IN ('XML', 'JSON', 'plain')),
-                          description VARCHAR(255),
-                          CONSTRAINT "REG_ID_PK" PRIMARY KEY (id)
-                          USING INDEX ENABLE
+                          description VARCHAR(255)
 );
 
 CREATE TABLE SETTINGS (
-                          id INT NOT NULL,
+                          id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                           device_id INT NOT NULL,
                           host_name VARCHAR(20),
                           project VARCHAR(255),
                           registry VARCHAR(255),
                           created_date DATE,
                           acktime_date DATE,
-                          accepted_date DATE,
-                          CONSTRAINT "SET_ID_PK" PRIMARY KEY (id)
-                          USING INDEX ENABLE
+                          accepted_date DATE
 );
 
 CREATE TABLE FIRMWARE (
-                          id INT NOT NULL,
+                          id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                           major INT,
                           minor INT,
                           patch INT,
-                          released_date DATE,
-                          CONSTRAINT "FIR_ID_PK" PRIMARY KEY (id)
-                          USING INDEX ENABLE
+                          released_date DATE
 );
 
 CREATE TABLE DEVICES_FIRMWARE (
-                                 id INT NOT NULL,
+                                 id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                                  device_id INT NOT NULL,
                                  firmware_id INT NOT NULL,
                                  started_date DATE,
                                  completed_date DATE,
                                  attempt INT,
-                                 error_message VARCHAR(20),
-                                 CONSTRAINT "DEF_ID_PK" PRIMARY KEY (id)
-                                 USING INDEX ENABLE
+                                 error_message VARCHAR(20)
 );
 
 CREATE TABLE CREDENTIAL (
-                            id INT NOT NULL,
+                            id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                             type VARCHAR(20) NOT NULL CHECK (type IN ('ES256', 'RS256')),
                             public_key VARCHAR(255) NOT NULL,
                             created_date DATE NOT NULL,
-                            expired_date DATE,
-                            CONSTRAINT "CRE_ID_PK" PRIMARY KEY (id)
-                            USING INDEX ENABLE
+                            expired_date DATE
 );
 
 CREATE TABLE CONFIGURATIONS (
-                                id INT NOT NULL,
+                                id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                                 version VARCHAR(20) NOT NULL,
                                 created_date DATE NOT NULL,
                                 sent_date DATE NOT NULL,
                                 verificated_date DATE NOT NULL,
-                                accepted boolean DEFAULT FALSE,
-                                CONSTRAINT "CON_ID_PK" PRIMARY KEY (id)
-                                USING INDEX ENABLE
+                                accepted boolean DEFAULT FALSE
 );
 
 CREATE TABLE CONFIG_PIN (
-                            id INT NOT NULL,
+                            id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                             config_id INT NOT NULL,
                             AIO_id INT,
                             DIO_id INT,
                             SPI_id INT,
-                            I2C_id INT,
-                            CONSTRAINT "COP_ID_PK" PRIMARY KEY (id)
-                            USING INDEX ENABLE
+                            I2C_id INT
 );
 
 CREATE TABLE AIO (
-                     pin INT NOT NULL,
+                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                      "mode" VARCHAR(20),
                      period DATE,
                      pin_number INT NOT NULL,
                      voltage_range VARCHAR(20),
-                     description VARCHAR(20),
-                     CONSTRAINT "AIO_PIN_PK" PRIMARY KEY (pin)
-                     USING INDEX ENABLE
+                     description VARCHAR(20)
 );
 
 CREATE TABLE DIO (
-                     pin INT NOT NULL,
+                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                      "mode" VARCHAR(20),
                      period DATE,
                      pin_number INT NOT NULL,
                      direction VARCHAR(20),
-                     description VARCHAR(20),
-                     CONSTRAINT "DIO_PIN_PK" PRIMARY KEY (pin)
-                     USING INDEX ENABLE                        
+                     description VARCHAR(20)                        
 );
 
 CREATE TABLE SPI (
-                     pin INT NOT NULL,
+                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                      "mode" VARCHAR(20),
                      mosi_pin INT NOT NULL,
                      miso_pin INT NOT NULL,
                      sclk_pin INT NOT NULL,
                      cs_pin INT NOT NULL,
-                     description VARCHAR(20),
-                     CONSTRAINT "SPI_PIN_PK" PRIMARY KEY (pin)
-                     USING INDEX ENABLE
+                     description VARCHAR(20)
 );
 
 CREATE TABLE I2C (
-                     pin INT NOT NULL,
+                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
                      "mode" VARCHAR(20),
                      period DATE,
                      sda_pin INT NOT NULL,
                      scl_pin INT NOT NULL,
-                     description VARCHAR(20),
-                     CONSTRAINT "I2C_PIN_PK" PRIMARY KEY (pin)
-                     USING INDEX ENABLE
+                     description VARCHAR(20)
 );
 
 ALTER TABLE META ADD CONSTRAINT "META_FK" FOREIGN KEY (device_id) REFERENCES DEVICES(id);
