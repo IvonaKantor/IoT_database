@@ -43,8 +43,8 @@ CREATE TABLE events (
 );
 
 CREATE TABLE logs (
-                      id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                      "level" VARCHAR(20) NOT NULL check ("level" IN ('debug', 'info', 'warn', 'error')),
+                      id VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
+                      "level" VARCHAR(7) NOT NULL check ("level" IN ('debug', 'info', 'warn', 'error')),
                       timestamp DATE NOT NULL,
                       message VARCHAR(20)
 );
