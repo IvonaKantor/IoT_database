@@ -44,16 +44,16 @@ CREATE TABLE events (
 
 CREATE TABLE logs (
                       id VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                      "level" VARCHAR(7) NOT NULL check ("level" IN ('debug', 'info', 'warn', 'error')),
+                      "level" VARCHAR(7) NOT NULL CHECK ("level" IN ('debug', 'info', 'warn', 'error')),
                       timestamp DATE NOT NULL,
                       message VARCHAR(20)
 );
 
 CREATE TABLE registry (
-                          id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
+                          id VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
                           name VARCHAR(20) NOT NULL,
                           created_date DATE NOT NULL,
-                          type_logs VARCHAR(20) NOT NULL check (type_logs IN ('XML', 'JSON', 'plain')),
+                          type_logs VARCHAR(7) CHECK (type_logs IN ('XML', 'JSON', 'plain')),
                           description VARCHAR(255)
 );
 
