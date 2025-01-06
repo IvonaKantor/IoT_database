@@ -23,7 +23,7 @@ CREATE TABLE devices (
 );
 
 CREATE TABLE device_type (
-                         type INT NOT NULL PRIMARY KEY USING INDEX ENABLE
+                         type VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE
 );
 
 CREATE TABLE meta (
