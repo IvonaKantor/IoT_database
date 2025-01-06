@@ -21,6 +21,10 @@ CREATE TABLE devices (
                          location VARCHAR(20) NOT NULL
 );
 
+CREATE TABLE device_type (
+                         type INT NOT NULL PRIMARY KEY USING INDEX ENABLE
+);
+
 CREATE TABLE meta (
                       device_id INT NOT NULL,
                       key VARCHAR(20) NOT NULL,
