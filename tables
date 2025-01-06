@@ -1,4 +1,5 @@
 DROP TABLE devices CASCADE CONSTRAINTS;
+DROP TABLE device_type CASCADE CONSTRAINTS;
 DROP TABLE meta CASCADE CONSTRAINTS;
 DROP TABLE events CASCADE CONSTRAINTS;
 DROP TABLE logs CASCADE CONSTRAINTS;
@@ -8,11 +9,6 @@ DROP TABLE firmware CASCADE CONSTRAINTS;
 DROP TABLE devices_firmware CASCADE CONSTRAINTS;
 DROP TABLE credential CASCADE CONSTRAINTS;
 DROP TABLE configurations CASCADE CONSTRAINTS;
-DROP TABLE config_pin CASCADE CONSTRAINTS;
-DROP TABLE aio CASCADE CONSTRAINTS;
-DROP TABLE dio CASCADE CONSTRAINTS;
-DROP TABLE spi CASCADE CONSTRAINTS;
-DROP TABLE i2c CASCADE CONSTRAINTS;
 
 
 CREATE TABLE devices (
@@ -102,59 +98,10 @@ CREATE TABLE configurations (
                                 accepted boolean DEFAULT FALSE
 );
 
-CREATE TABLE config_pin (
-                            id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                            config_id INT NOT NULL,
-                            aio_id INT,
-                            dio_id INT,
-                            spi_id INT,
-                            i2c_id INT
-);
 
-CREATE TABLE aio (
-                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                     "mode" VARCHAR(20),
-                     period DATE,
-                     pin_number INT NOT NULL,
-                     voltage_range VARCHAR(20),
-                     description VARCHAR(20)
-);
-
-CREATE TABLE dio (
-                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                     "mode" VARCHAR(20),
-                     period DATE,
-                     pin_number INT NOT NULL,
-                     direction VARCHAR(20),
-                     description VARCHAR(20)                        
-);
-
-CREATE TABLE spi (
-                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                     "mode" VARCHAR(20),
-                     mosi_pin INT NOT NULL,
-                     miso_pin INT NOT NULL,
-                     sclk_pin INT NOT NULL,
-                     cs_pin INT NOT NULL,
-                     description VARCHAR(20)
-);
-
-CREATE TABLE i2c (
-                     pin INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                     "mode" VARCHAR(20),
-                     period DATE,
-                     sda_pin INT NOT NULL,
-                     scl_pin INT NOT NULL,
-                     description VARCHAR(20)
-);
 
 ALTER TABLE meta ADD CONSTRAINT "META_FK" FOREIGN KEY (device_id) REFERENCES devices(id);
 ALTER TABLE events ADD CONSTRAINT "EVENTS_FK" FOREIGN KEY (device_id) REFERENCES devices(id);
 ALTER TABLE settings ADD CONSTRAINT "SETTINGS_FK" FOREIGN KEY (device_id) REFERENCES devices(id);
 ALTER TABLE firmware ADD CONSTRAINT "D_FIRMWARE_FK" FOREIGN KEY (device_id) REFERENCES devices(id);
 ALTER TABLE devices_firmware ADD CONSTRAINT "D_FIRMWARE_FK1" FOREIGN KEY (firmware_id) REFERENCES firmware(id);
-ALTER TABLE config_pin ADD CONSTRAINT "CONF_FK" FOREIGN KEY (config_id) REFERENCES configurations(id);
-ALTER TABLE config_pin ADD CONSTRAINT "AIO_FK" FOREIGN KEY (aio_id) REFERENCES aio(id);
-ALTER TABLE config_pin ADD CONSTRAINT "DIO_FK" FOREIGN KEY (dio_id) REFERENCES dio(id);
-ALTER TABLE config_pin ADD CONSTRAINT "SPI_FK" FOREIGN KEY (spi_id) REFERENCES spi(id);
-ALTER TABLE config_pin ADD CONSTRAINT "I2C_FK" FOREIGN KEY (i2c_id) REFERENCES i2c(id);
