@@ -58,8 +58,8 @@ CREATE TABLE registry (
 );
 
 CREATE TABLE settings (
-                          id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                          device_id INT NOT NULL,
+                          id VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
+                          device_id VARCHAR(20) NOT NULL,
                           host_name VARCHAR(20),
                           project VARCHAR(255),
                           registry VARCHAR(255),
