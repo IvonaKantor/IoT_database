@@ -34,12 +34,12 @@ CREATE TABLE meta (
 
 CREATE TABLE events (
                         id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                        device_id INT NOT NULL,
+                        device_id VARCHAR(20) NOT NULL,
                         name VARCHAR(20),
                         value VARCHAR(255),
                         timestamp DATE,
                         created_date DATE,
-                        type VARCHAR(20) NOT NULL check (type IN ('info', 'warning', 'error'))
+                        type VARCHAR(20) NOT NULL CHECK (type IN ('info', 'warning', 'error'))
 );
 
 CREATE TABLE logs (
