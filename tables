@@ -12,11 +12,12 @@ DROP TABLE configurations CASCADE CONSTRAINTS;
 
 
 CREATE TABLE devices (
-                         id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
+                         id VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
+                         registry_id INT NOT NULL,
                          device_name VARCHAR(20) NOT NULL,
-                         status VARCHAR(20) NOT NULL,
+                         status VARCHAR(20) NOT NULL CHECK(status IN ('active', 'disactive')),
                          last_updating DATE NOT NULL,
-                         device_type INT NOT NULL check (DEVICE_TYPE IN (0, 1, 2)),
+                         device_type INT NOT NULL CHECK (device_type IN (0, 1, 2)),
                          serial_number VARCHAR(20) UNIQUE,
                          location VARCHAR(20) NOT NULL
 );
