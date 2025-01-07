@@ -16,7 +16,7 @@ CREATE TABLE devices (
                          registry_id INT NOT NULL,
                          device_name VARCHAR(20) NOT NULL,
                          device_type VARCHAR(20) NOT NULL,
-                         status VARCHAR(20) NOT NULL CHECK(status IN ('active', 'disactive')),
+                         status VARCHAR(20) NOT NULL CHECK(status IN ('active', 'inactive')),
                          last_updating DATE NOT NULL,
                          serial_number VARCHAR(20) UNIQUE,
                          location VARCHAR(20) NOT NULL
