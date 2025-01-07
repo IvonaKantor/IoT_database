@@ -78,7 +78,7 @@ CREATE TABLE firmware (
 );
 
 CREATE TABLE devices_firmware (
-                                 id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
+                                 id VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
                                  device_id INT NOT NULL,
                                  firmware_id INT NOT NULL,
                                  started_date DATE,
