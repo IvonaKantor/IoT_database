@@ -98,11 +98,13 @@ CREATE TABLE credential (
 
 CREATE TABLE configurations (
                                 id INT NOT NULL PRIMARY KEY USING INDEX ENABLE,
+                                device_id VARCHAR(20) NOT NULL,
                                 version VARCHAR(20) NOT NULL,
+                                data BLOB NOT NULL,
                                 created_date DATE NOT NULL,
                                 sent_date DATE,
                                 verificated_date DATE,
-                                accepted boolean DEFAULT FALSE
+                                accepted BOOLEAN DEFAULT FALSE
 );
 
 
