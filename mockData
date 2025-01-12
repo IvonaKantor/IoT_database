@@ -13,4 +13,6 @@ INSERT ALL
     VALUES('D006', 106, 'Button', 'DashButton', 'active', TO_DATE('2025-01-10','YYYY-MM-DD'), 'SN390', 'Office1')
     INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location)
     VALUES('D007', 107, 'Alarm', 'SmokeAlarm', 'active', TO_DATE('2024-09-30','YYYY-MM-DD'), 'SN450', 'Office1')
+    INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location)
+    VALUES('D007', 107, 'Raspberry_pi', 'Raspbery_pi3', 'active', TO_DATE('2024-12-05','YYYY-MM-DD'), 'SN850', 'Office1')
 SELECT 1 FROM DUAL;
