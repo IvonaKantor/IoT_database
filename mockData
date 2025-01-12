@@ -20,11 +20,13 @@ SELECT 1 FROM DUAL;
 
 INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
 VALUES 
-    ('DF001', 1, 1, TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-02', 'YYYY-MM-DD'), 1, NULL),
-    ('DF002', 1, 2, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-02', 'YYYY-MM-DD'), 1, NULL),
-    ('DF003', 2, 3, TO_DATE('2024-03-05', 'YYYY-MM-DD'), TO_DATE('2024-03-06', 'YYYY-MM-DD'), 2, 'Timeout error'),
-    ('DF004', 2, 4, TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-12', 'YYYY-MM-DD'), 3, 'Failed to apply firmware'),
-    ('DF005', 3, 5, TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-03', 'YYYY-MM-DD'), 1, NULL),
-    ('DF006', 3, 6, TO_DATE('2024-06-15', 'YYYY-MM-DD'), TO_DATE('2024-06-16', 'YYYY-MM-DD'), 1, NULL);
-
+    ('DF001','D001' , 'F001', TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-01', 'YYYY-MM-DD'), 1, NULL),
+    ('DF002', 'D002', 'F002', TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-02', 'YYYY-MM-DD'), 1, NULL),
+    ('DF003', 'D003', 'F003', TO_DATE('2024-03-05', 'YYYY-MM-DD'), TO_DATE('2024-03-06', 'YYYY-MM-DD'), 2, 'Timeout error'),
+    ('DF004', 'D004', 'F004', TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-11', 'YYYY-MM-DD'), 3, 'Failed to apply firmware'),
+    ('DF005', 'D005', 'F005', TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-01', 'YYYY-MM-DD'), 1, NULL),
+    ('DF006', 'D006', 'F006', TO_DATE('2024-06-15', 'YYYY-MM-DD'), TO_DATE('2024-06-16', 'YYYY-MM-DD'), 1, NULL), 
+    ('DF007', 'D007', 'F007', TO_DATE('2024-11-23', 'YYYY-MM-DD'), TO_DATE('2024-11-23', 'YYYY-MM-DD'), 1, NULL),
+    ('DF008', 'D008', 'F008', TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-02', 'YYYY-MM-DD'), 1, NULL),
+    ('DF009', 'D009', 'F009', TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-01', 'YYYY-MM-DD'), 1, NULL);
 
