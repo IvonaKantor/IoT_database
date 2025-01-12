@@ -16,3 +16,14 @@ INSERT ALL
     INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location)
     VALUES('D008', 108, 'Raspberry_pi', 'Raspbery_pi3', 'active', TO_DATE('2024-12-05','YYYY-MM-DD'), 'SN850', 'Office1')
 SELECT 1 FROM DUAL;
+
+
+INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES 
+    ('DF001', 1, 1, '2024-01-01', '2024-01-02', 1, NULL),
+    ('DF002', 1, 2, '2024-02-01', '2024-02-02', 1, NULL),
+    ('DF003', 2, 3, '2024-03-05', '2024-03-06', 2, 'Timeout error'),
+    ('DF004', 2, 4, '2024-04-10', '2024-04-12', 3, 'Failed to apply firmware'),
+    ('DF005', 3, 5, '2024-05-01', '2024-05-03', 1, NULL),
+    ('DF006', 3, 6, '2024-06-15', '2024-06-16', 1, NULL);
+
