@@ -1,12 +1,12 @@
 INSERT ALL
     INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location) 
-    VALUES ('D001', 101, 'Sensor', 'TempSensor-A', 'active', TO_DATE('2025-01-01', 'YYYY-MM-DD'), 'SN001', 'Warehouse-A')
+    VALUES ('D001', 101, 'Sensor', 'TempSensor', 'active', TO_DATE('2025-01-01', 'YYYY-MM-DD'), 'SN001', 'Warehouse-A')
     INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location) 
-    VALUES ('D002', 102, 'Camera', 'SecurityCam-B', 'inactive', TO_DATE('2024-12-15', 'YYYY-MM-DD'), 'SN002', 'Main-Gate')
+    VALUES ('D002', 102, 'Camera', 'SecurityCam', 'inactive', TO_DATE('2024-12-15', 'YYYY-MM-DD'), 'SN002', 'Main-Gate')
     INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location) 
-    VALUES ('D003', 103, 'Router', 'Router-C', 'active', TO_DATE('2025-01-05', 'YYYY-MM-DD'), 'SN003', 'Server-Room')
+    VALUES ('D003', 103, 'Router', 'Router', 'active', TO_DATE('2025-01-05', 'YYYY-MM-DD'), 'SN003', 'Server-Room')
     INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location) 
-    VALUES ('D004', 104, 'Switch', 'Switch-D', 'inactive', TO_DATE('2024-11-20', 'YYYY-MM-DD'), 'SN004', 'Office-A')
+    VALUES ('D004', 104, 'Switch', 'Switch', 'inactive', TO_DATE('2024-11-20', 'YYYY-MM-DD'), 'SN004', 'Office-A')
     INTO devices (id, registry_id, device_type, device_name, status, last_updated, serial_number, location) 
-    VALUES ('D005', 105, 'Sensor', 'HumiditySensor-E', 'active', TO_DATE('2025-01-06', 'YYYY-MM-DD'), 'SN005', 'Warehouse-B')
+    VALUES ('D005', 105, 'Sensor', 'HumiditySensor', 'active', TO_DATE('2025-01-06', 'YYYY-MM-DD'), 'SN005', 'Warehouse-B')
 SELECT 1 FROM DUAL;
