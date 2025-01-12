@@ -30,3 +30,14 @@ VALUES
     ('DF008', 'D008', 'F008', TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-02', 'YYYY-MM-DD'), 1, NULL),
     ('DF009', 'D009', 'F009', TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-01', 'YYYY-MM-DD'), 1, NULL);
 
+INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acktime_date, accepted_date)
+VALUES ('S001', 'D001', 'Host_A', 'IoT_Project', 'Registry_A', TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-02', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'));
+INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acktime_date, accepted_date)
+VALUES ('S002', 'D002', 'Host_B', 'IoT_Project', 'Registry_B', TO_DATE('2023-02-01', 'YYYY-MM-DD'), TO_DATE('2023-02-02', 'YYYY-MM-DD'), NULL);
+INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acktime_date, accepted_date)
+VALUES ('S003', 'D003', NULL, 'IoT_Project', 'Registry_C', TO_DATE('2023-03-01', 'YYYY-MM-DD'), NULL, NULL);
+INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acktime_date, accepted_date)
+VALUES ('S004', 'D004', 'Host_D', 'IoT_Project', 'Registry_D', TO_DATE('2023-04-01', 'YYYY-MM-DD'), TO_DATE('2023-04-02', 'YYYY-MM-DD'), TO_DATE('2023-04-03', 'YYYY-MM-DD'));
+INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acktime_date, accepted_date)
+VALUES ('S005', 'D005', 'Host_E', 'IoT_Project', 'Registry_E', TO_DATE('2023-05-01', 'YYYY-MM-DD'), TO_DATE('2023-05-02', 'YYYY-MM-DD'), TO_DATE('2023-05-03', 'YYYY-MM-DD'));
+
