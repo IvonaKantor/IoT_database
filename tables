@@ -71,10 +71,10 @@ CREATE TABLE settings (
 
 CREATE TABLE firmware (
                           id VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
-                          device_type VARCHAR(20) NOT NULL UNIQUE,
-                          major NUMERIC(3,0) NOT NULL UNIQUE,
-                          minor NUMERIC(3,0) NOT NULL UNIQUE,
-                          patch NUMERIC(3,0) NOT NULL UNIQUE,
+                          device_type VARCHAR(20) NOT NULL,
+                          major NUMERIC(3,0) NOT NULL,
+                          minor NUMERIC(3,0) NOT NULL,
+                          patch NUMERIC(3,0) NOT NULL,
                           released_date DATE NOT NULL
 );
 
