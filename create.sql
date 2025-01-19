@@ -50,8 +50,8 @@ CREATE TABLE events
 (
     id           VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
     device_id    VARCHAR(20) NOT NULL,
-    name         VARCHAR(20),
-    value        VARCHAR(255),
+    name         VARCHAR(20) NOT NULL,
+    value        VARCHAR(255) NOT NULL,
     timestamp    DATE,
     created_date DATE,
     type         VARCHAR(20) NOT NULL CHECK (type IN ('info', 'warning', 'error'))
@@ -61,7 +61,7 @@ CREATE TABLE logs
 (
     id        VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
     device_id VARCHAR(20) NOT NULL,
-    "level"   VARCHAR(7)  NOT NULL CHECK ("level" IN ('debug', 'info', 'warn', 'error')),
+    "level"   VARCHAR(7)  NOT NULL CHECK ("level" IN ('debug', 'info', 'warning', 'error')),
     timestamp DATE        NOT NULL,
     message   VARCHAR(20)
 );
@@ -122,27 +122,27 @@ CREATE TABLE configurations
 
 
 ALTER TABLE meta
-    ADD CONSTRAINT "META_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
+    ADD CONSTRAINT "META_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 ALTER TABLE events
-    ADD CONSTRAINT "EVENTS_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
+    ADD CONSTRAINT "EVENTS_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 ALTER TABLE configurations
-    ADD CONSTRAINT "CONF_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
+    ADD CONSTRAINT "CONFIG_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 ALTER TABLE devices
-    ADD CONSTRAINT "DEVICE_FK1" FOREIGN KEY (registry_id) REFERENCES registry (id);
+    ADD CONSTRAINT "DEVICE_REGISTRY_FK" FOREIGN KEY (registry_id) REFERENCES registry (id);
 ALTER TABLE devices
-    ADD CONSTRAINT "DEVICE_FK2" FOREIGN KEY (device_type) REFERENCES device_type (type);
+    ADD CONSTRAINT "DEVICE_DEVTYPE_FK" FOREIGN KEY (device_type) REFERENCES device_type (type);
 ALTER TABLE firmware
-    ADD CONSTRAINT "FIRM_FK" FOREIGN KEY (device_type) REFERENCES device_type (type);
+    ADD CONSTRAINT "FIRM_DEVTYPE_FK" FOREIGN KEY (device_type) REFERENCES device_type (type);
 ALTER TABLE settings
-    ADD CONSTRAINT "SETT_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
+    ADD CONSTRAINT "SETT_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 ALTER TABLE devices_firmware
-    ADD CONSTRAINT "DEV_F_FK1" FOREIGN KEY (device_id) REFERENCES devices (id);
+    ADD CONSTRAINT "DEVFIRM_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 ALTER TABLE devices_firmware
-    ADD CONSTRAINT "DEV_F_FK2" FOREIGN KEY (firmware_id) REFERENCES firmware (id);
+    ADD CONSTRAINT "DEVFIRM_FIRM_FK" FOREIGN KEY (firmware_id) REFERENCES firmware (id);
 ALTER TABLE credential
-    ADD CONSTRAINT "CRED_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
+    ADD CONSTRAINT "CRED_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 ALTER TABLE logs
-    ADD CONSTRAINT "LOGS_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
+    ADD CONSTRAINT "LOGS_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 
 ALTER TABLE firmware
     ADD CONSTRAINT "VERSION_" UNIQUE (major, minor, patch, device_type)
