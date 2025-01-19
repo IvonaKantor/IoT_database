@@ -10,10 +10,19 @@ DROP TABLE devices_firmware CASCADE CONSTRAINTS;
 DROP TABLE credential CASCADE CONSTRAINTS;
 DROP TABLE configurations CASCADE CONSTRAINTS;
 
+/*
+CREATE SEQUENCE sequence_logs
+    INCREMENT BY 1
+    START WITH 0
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CYCLE
+    CACHE 5;
+*/
 
 CREATE TABLE credential
 (
-    id           VARCHAR(20)  NOT NULL PRIMARY KEY USING INDEX ENABLE,
+    id           NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     device_id    VARCHAR(20)  NOT NULL,
     type         VARCHAR(5)   NOT NULL CHECK (type IN ('ES256', 'RS256')),
     public_key   VARCHAR(512) NOT NULL,
@@ -40,30 +49,30 @@ CREATE TABLE device_type
 
 CREATE TABLE meta
 (
-    id        VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
-    device_id VARCHAR(20) NOT NULL,
+    id        NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    device_id VARCHAR(20)  NOT NULL,
     key       VARCHAR(255) NOT NULL,
     value     VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE events
 (
-    id           VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
-    device_id    VARCHAR(20) NOT NULL,
-    name         VARCHAR(20) NOT NULL,
+    id           NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    device_id    VARCHAR(20)  NOT NULL,
+    name         VARCHAR(20)  NOT NULL,
     value        VARCHAR(255) NOT NULL,
     timestamp    DATE,
     created_date DATE,
-    type         VARCHAR(20) NOT NULL CHECK (type IN ('info', 'warning', 'error'))
+    type         VARCHAR(20)  NOT NULL CHECK (type IN ('info', 'warning', 'error'))
 );
 
 CREATE TABLE logs
 (
-    id        VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
+    id        NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     device_id VARCHAR(20) NOT NULL,
     "level"   VARCHAR(7)  NOT NULL CHECK ("level" IN ('debug', 'info', 'warning', 'error')),
     timestamp DATE        NOT NULL,
-    message   VARCHAR(20)
+    message   VARCHAR(64)
 );
 
 CREATE TABLE registry
@@ -77,7 +86,7 @@ CREATE TABLE registry
 
 CREATE TABLE settings
 (
-    id               VARCHAR(20)  NOT NULL PRIMARY KEY USING INDEX ENABLE,
+    id               NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     device_id        VARCHAR(20)  NOT NULL,
     host_name        VARCHAR(20),
     project          VARCHAR(255) NOT NULL,
@@ -89,17 +98,18 @@ CREATE TABLE settings
 
 CREATE TABLE firmware
 (
-    id            INT           NOT NULL PRIMARY KEY USING INDEX ENABLE,
+    id            NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     device_type   VARCHAR(20)   NOT NULL,
     major         NUMERIC(3, 0) NOT NULL,
     minor         NUMERIC(3, 0) NOT NULL,
     patch         NUMERIC(3, 0) NOT NULL,
-    released_date DATE          NOT NULL
+    released_date DATE          NOT NULL,
+    data          BLOB          NOT NULL
 );
 
 CREATE TABLE devices_firmware
 (
-    id             VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
+    id             NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     device_id      VARCHAR(20) NOT NULL,
     firmware_id    INT         NOT NULL,
     started_date   DATE,
@@ -110,7 +120,7 @@ CREATE TABLE devices_firmware
 
 CREATE TABLE configurations
 (
-    id               VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
+    id               NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     device_id        VARCHAR(20) NOT NULL,
     version          VARCHAR(20) NOT NULL,
     data             BLOB        NOT NULL,
