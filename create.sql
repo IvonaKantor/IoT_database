@@ -11,6 +11,16 @@ DROP TABLE credential CASCADE CONSTRAINTS;
 DROP TABLE configurations CASCADE CONSTRAINTS;
 
 
+CREATE TABLE credential
+(
+    id           VARCHAR(20)  NOT NULL PRIMARY KEY USING INDEX ENABLE,
+    device_id    VARCHAR(20)  NOT NULL,
+    type         VARCHAR(5)   NOT NULL CHECK (type IN ('ES256', 'RS256')),
+    public_key   VARCHAR(512) NOT NULL,
+    created_date DATE         NOT NULL,
+    expired_date DATE         NOT NULL
+);
+
 CREATE TABLE devices
 (
     id            VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
@@ -96,16 +106,6 @@ CREATE TABLE devices_firmware
     completed_date DATE,
     attempt        INT,
     error_message  VARCHAR(20)
-);
-
-CREATE TABLE credential
-(
-    id           VARCHAR(20)  NOT NULL PRIMARY KEY USING INDEX ENABLE,
-    device_id    VARCHAR(20)  NOT NULL,
-    type         VARCHAR(5)   NOT NULL CHECK (type IN ('ES256', 'RS256')),
-    public_key   VARCHAR(512) NOT NULL,
-    created_date DATE         NOT NULL,
-    expired_date DATE         NOT NULL
 );
 
 CREATE TABLE configurations
