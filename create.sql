@@ -42,8 +42,8 @@ CREATE TABLE meta
 (
     id        VARCHAR(20) NOT NULL PRIMARY KEY USING INDEX ENABLE,
     device_id VARCHAR(20) NOT NULL,
-    key       VARCHAR(20) NOT NULL,
-    value     INT
+    key       VARCHAR(255) NOT NULL,
+    value     VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE events
