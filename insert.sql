@@ -44,101 +44,107 @@ VALUES ('D008', 'R003', 'pi', 'Raspbery_pi3', 'active', TO_DATE('2024-12-05', 'Y
 
 
 --firmware
-INSERT INTO firmware (id, device_type, major, minor, patch, released_date, data)
-VALUES (1, 'core', 1, 0, 1, TO_DATE('2024-12-05', 'YYYY-MM-DD'), );
-INSERT INTO firmware(id, device_type, major, minor, patch, released_date, data)
-VALUES (2, 'pi', 1, 1, 0, TO_DATE('2025-01-05', 'YYYY-MM-DD'));
-INSERT INTO firmware(id, device_type, major, minor, patch, released_date)
-VALUES (3, 'core', 0, 1, 0, TO_DATE('2024-11-15', 'YYYY-MM-DD'));
-INSERT INTO firmware(id, device_type, major, minor, patch, released_date)
-VALUES (4, 'nrf', 0, 1, 0, TO_DATE('2024-11-15', 'YYYY-MM-DD'));
-INSERT INTO firmware(id, device_type, major, minor, patch, released_date)
-VALUES (5, 'nrf', 0, 1, 0, TO_DATE('2024-11-15', 'YYYY-MM-DD'));
-INSERT INTO firmware(id, device_type, major, minor, patch, released_date)
-VALUES (6, 'pi', 0, 1, 0, TO_DATE('2024-11-15', 'YYYY-MM-DD'));
+INSERT INTO firmware (device_type, major, minor, patch, released_date, data)
+VALUES ('core', 1, 0, 1, TO_DATE('2024-12-05', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('1f8b080087cdc152cdc928cf2fca49d1e30200dgjsd0000'));
+INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
+VALUES ('pi', 1, 1, 0, TO_DATE('2025-01-05', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('cvmjdj0087cdc1520c9d75128cf2fcc0e000000'));
+INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
+VALUES ('core', 0, 1, 0, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('63ondl1520003f348cdc9c1e30200d7bbcdfc0e000000'));
+INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
+VALUES ('nrf', 0, 1, 1, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('sukf8b088cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'));
+INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
+VALUES ('nrf', 0, 1, 2, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('sgtwe1520003f348cdc9c9d75128cf2fca49d1e30200ddfc0e000000'));
+INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
+VALUES ('pi', 0, 1, 2, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('1f8b080087cdc15200hsduieee30200d7bbcdfc0e000000'));
 
 
 --device_firmware
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('1', '1', 1, TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-01', 'YYYY-MM-DD'), 1, '');
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('2', '2', 2, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-02', 'YYYY-MM-DD'), 1, 'NULL');
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('3', '3', 3, TO_DATE('2024-03-05', 'YYYY-MM-DD'), TO_DATE('2024-03-06', 'YYYY-MM-DD'), 2, 'Timeout error');
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('4', '4', 4, TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-11', 'YYYY-MM-DD'), 3,
-        'Failed to apply firmware');
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('5', '5', 5, TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-01', 'YYYY-MM-DD'), 1, NULL);
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('6', '6', 6, TO_DATE('2024-06-15', 'YYYY-MM-DD'), TO_DATE('2024-06-16', 'YYYY-MM-DD'), 1, NULL);
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('7', '7', 7, TO_DATE('2024-11-23', 'YYYY-MM-DD'), TO_DATE('2024-11-23', 'YYYY-MM-DD'), 1, NULL);
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('8', '8', 8, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-02', 'YYYY-MM-DD'), 1, NULL);
-INSERT INTO devices_firmware (id, device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('9', '9', 9, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-01', 'YYYY-MM-DD'), 1, NULL);
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D001', 1, TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-01', 'YYYY-MM-DD'), 1, 'Unsupported');
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D002', 2, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-02', 'YYYY-MM-DD'), 1, NULL);
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D001', 3, TO_DATE('2024-03-05', 'YYYY-MM-DD'), TO_DATE('2024-03-06', 'YYYY-MM-DD'), 2, 'Timeout');
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D003', 1, TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-11', 'YYYY-MM-DD'), 3,
+        'Failed');
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D002', 4, TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-01', 'YYYY-MM-DD'), 1, NULL);
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D005', 6, TO_DATE('2024-06-15', 'YYYY-MM-DD'), TO_DATE('2024-06-16', 'YYYY-MM-DD'), 1, NULL);
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D004', 4, TO_DATE('2024-11-23', 'YYYY-MM-DD'), TO_DATE('2024-11-23', 'YYYY-MM-DD'), 1, NULL);
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D008', 6, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-02', 'YYYY-MM-DD'), 1, NULL);
+INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
+VALUES ('D004', 1, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-01', 'YYYY-MM-DD'), 1, NULL);
 
 
 --settings
-INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('1', '1', '?', 'IoT_Project', 'Registry_A', TO_DATE('2023-01-01', 'YYYY-MM-DD'),
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('1', '?', 'IoT_Project', 'Registry_A', TO_DATE('2023-01-01', 'YYYY-MM-DD'),
         TO_DATE('2023-01-02', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'));
 
-INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('2', '2', '?', 'IoT_Project', 'Registry_B', TO_DATE('2023-02-01', 'YYYY-MM-DD'),
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('2', '?', 'IoT_Project', 'Registry_B', TO_DATE('2023-02-01', 'YYYY-MM-DD'),
         TO_DATE('2023-02-02', 'YYYY-MM-DD'), NULL);
 
-INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('3', '3', '?', 'IoT_Project', 'Registry_C', TO_DATE('2023-03-01', 'YYYY-MM-DD'), NULL, NULL);
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('3', '?', 'IoT_Project', 'Registry_C', TO_DATE('2023-03-01', 'YYYY-MM-DD'), NULL, NULL);
 
-INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('4', '4', '?', 'IoT_Project', 'Registry_D', TO_DATE('2023-04-01', 'YYYY-MM-DD'),
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('4', '?', 'IoT_Project', 'Registry_D', TO_DATE('2023-04-01', 'YYYY-MM-DD'),
         TO_DATE('2023-04-02', 'YYYY-MM-DD'), TO_DATE('2023-04-03', 'YYYY-MM-DD'));
 
-INSERT INTO settings (id, device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('5', '5', '?', 'IoT_Project', 'Registry_E', TO_DATE('2023-05-01', 'YYYY-MM-DD'),
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('5', '?', 'IoT_Project', 'Registry_E', TO_DATE('2023-05-01', 'YYYY-MM-DD'),
         TO_DATE('2023-05-02', 'YYYY-MM-DD'), TO_DATE('2023-05-03', 'YYYY-MM-DD'));
 
 
 --credential
-INSERT INTO credential (id, device_id, type, public_key, created_date, expired_date)
-VALUES ('1', '1', 'ES256',
+INSERT INTO credential ( device_id, type, public_key, created_date, expired_date)
+VALUES ( '1', 'ES256',
         '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         TO_DATE('2024-01-01', 'YYYY-MM-DD'),
         TO_DATE('2025-01-01', 'YYYY-MM-DD'));
 
-INSERT INTO credential (id, device_id, type, public_key, created_date, expired_date)
-VALUES ('2', '2', 'RS256', 'MIIBIjANBgkqhki', TO_DATE('2024-02-11', 'YYYY-MM-DD'),
+INSERT INTO credential ( device_id, type, public_key, created_date, expired_date)
+VALUES ( '2', 'RS256', 'MIIBIjANBgkqhki', TO_DATE('2024-02-11', 'YYYY-MM-DD'),
         TO_DATE('2025-02-11', 'YYYY-MM-DD'));
 
-INSERT INTO credential (id, device_id, type, public_key, created_date, expired_date)
-VALUES ('3', '3', 'ES256', 'MIIBIjANBgkqhki', TO_DATE('2023-09-01', 'YYYY-MM-DD'),
+INSERT INTO credential ( device_id, type, public_key, created_date, expired_date)
+VALUES ( '3', 'ES256', 'MIIBIjANBgkqhki', TO_DATE('2023-09-01', 'YYYY-MM-DD'),
         TO_DATE('2024-09-01', 'YYYY-MM-DD'));
 
-INSERT INTO credential (id, device_id, type, public_key, created_date, expired_date)
-VALUES ('4', '4', 'RS256', 'MIIBIjANBgkqhki', TO_DATE('2023-04-01', 'YYYY-MM-DD'),
+INSERT INTO credential ( device_id, type, public_key, created_date, expired_date)
+VALUES ( '4', 'RS256', 'MIIBIjANBgkqhki', TO_DATE('2023-04-01', 'YYYY-MM-DD'),
         TO_DATE('2024-04-01', 'YYYY-MM-DD'));
 
-INSERT INTO credential (id, device_id, type, public_key, created_date, expired_date)
-VALUES ('5', '5', 'ES256', 'MIIBIjANBgkqhki', TO_DATE('2023-05-01', 'YYYY-MM-DD'),
+INSERT INTO credential ( device_id, type, public_key, created_date, expired_date)
+VALUES ('5', 'ES256', 'MIIBIjANBgkqhki', TO_DATE('2023-05-01', 'YYYY-MM-DD'),
         TO_DATE('2024-05-01', 'YYYY-MM-DD'));
 
 --logs
 INSERT INTO logs (device_id, "level", timestamp, message)
-VALUES ( 'D001', 'info', SYSDATE, 'System start');
+VALUES ('D001', 'info', SYSDATE, 'System start');
 
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D002', 'debug', SYSDATE, 'Connection established');
 
 INSERT INTO logs (device_id, "level", timestamp, message)
-VALUES ('D003','warning', SYSDATE, 'High memory usage');
+VALUES ('D003', 'warning', SYSDATE, 'High memory usage');
 
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D004', 'error', SYSDATE, 'Disk failure');
 
 INSERT INTO logs (device_id, "level", timestamp, message)
-VALUES ('D005','info', SYSDATE, 'Backup completed');
+VALUES ('D005', 'info', SYSDATE, 'Backup completed');
 
 
 --configurations
@@ -148,10 +154,10 @@ VALUES ('D001', 'v1.1.1',
         TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-02', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'));
 
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, acknowledge_date)
-VALUES ( 'D002', 'v1.1.0', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2024-12-11', 'YYYY-MM-DD'), NULL, NULL);
+VALUES ('D002', 'v1.1.0', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2024-12-11', 'YYYY-MM-DD'), NULL, NULL);
 
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, acknowledge_date)
-VALUES ( 'D003', 'v2.0,1', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2025-01-01', 'YYYY-MM-DD'),
+VALUES ('D003', 'v2.0,1', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2025-01-01', 'YYYY-MM-DD'),
         TO_DATE('2023-03-02', 'YYYY-MM-DD'), NULL);
 
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, acknowledge_date)
@@ -163,42 +169,42 @@ VALUES ('D005', 'v3.0.0', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2024-05-01', 'YYYY-
 
 
 --events
-INSERT INTO events ( device_id, name, value, timestamp, created_date, type)
-VALUES ( 'D001', 'Temperature Alert', '85°C', TO_DATE('2023-01-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'),
-        TO_DATE('2023-01-01', 'YYYY-MM-DD'), 'warning');
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D001', 'Temperature Alert', '85°C', TO_DATE('2023-01-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'warning');
 
-INSERT INTO events ( device_id, name, value, timestamp, created_date, type)
-VALUES ( 'D002', 'Battery Level', 'Low: 10%', TO_DATE('2023-01-02 08:30:00', 'YYYY-MM-DD HH24:MI:SS'),
-        TO_DATE('2023-01-02', 'YYYY-MM-DD'), 'info');
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D002', 'Battery Level', 'Low: 10%', TO_DATE('2023-01-02 08:30:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'info');
 
-INSERT INTO events ( device_id, name, value, timestamp, created_date, type)
-VALUES ( 'D003', 'Overheat', 'Critical: 95°C', TO_DATE('2023-01-03 14:20:00', 'YYYY-MM-DD HH24:MI:SS'),
-        TO_DATE('2023-01-03', 'YYYY-MM-DD'), 'error');
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D003', 'Overheat', 'Critical: 95°C', TO_DATE('2023-01-03 14:20:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'error');
 
-INSERT INTO events ( device_id, name, value, timestamp, created_date, type)
-VALUES ( 'D004', 'Connection Lost', 'No signal', TO_DATE('2023-01-04 09:15:00', 'YYYY-MM-DD HH24:MI:SS'),
-        TO_DATE('2023-01-04', 'YYYY-MM-DD'), 'error');
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D004', 'Connection Lost', 'No signal', TO_DATE('2023-01-04 09:15:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'error');
 
-INSERT INTO events ( device_id, name, value, timestamp, created_date, type)
-VALUES ( 'D005', 'Firmware Update', 'Version 2.0 applied',
-        TO_DATE('2023-01-05 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-01-05', 'YYYY-MM-DD'), 'info');
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D005', 'Firmware Update', 'Version 2.0 applied',
+        TO_DATE('2023-01-05 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), SYSDATE, 'info');
 
 
 --meta
 INSERT INTO meta (device_id, key, value)
-VALUES ( '1', 'MaxTemp', 85);
+VALUES ('1', 'MaxTemp', 85);
 
-INSERT INTO meta ( device_id, key, value)
-VALUES ( 'D002', 'MinTemp', 5);
+INSERT INTO meta (device_id, key, value)
+VALUES ('D002', 'MinTemp', 5);
 
-INSERT INTO meta ( device_id, key, value)
-VALUES ( 'D003', 'BatteryLife', 80);
+INSERT INTO meta (device_id, key, value)
+VALUES ('D003', 'BatteryLife', 80);
 
-INSERT INTO meta ( device_id, key, value)
+INSERT INTO meta (device_id, key, value)
 VALUES ('D004', 'SignalStrength', 90);
 
-INSERT INTO meta ( device_id, key, value)
-VALUES ( 'D005', 'UpdateInterval', 30);
+INSERT INTO meta (device_id, key, value)
+VALUES ('D005', 'UpdateInterval', 30);
 
 
 
