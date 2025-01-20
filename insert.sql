@@ -81,7 +81,7 @@ VALUES ('D002', 2, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-02', 'Y
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
 VALUES ('D001', 3, TO_DATE('2024-03-05', 'YYYY-MM-DD'), TO_DATE('2024-03-06', 'YYYY-MM-DD'), 2, 'Timeout');
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('D003', 1, TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-11', 'YYYY-MM-DD'), 3,'Failed');
+VALUES ('D003', 1, TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-11', 'YYYY-MM-DD'), 3, 'Failed');
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
 VALUES ('D002', 4, TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-01', 'YYYY-MM-DD'), 1, NULL);
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
@@ -131,35 +131,42 @@ VALUES ('D008', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D001', 'ES256',
         '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2025-01-01', 'YYYY-MM-DD'));
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
-VALUES ('D002', 'RS256', '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiw79j0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2025-02-11', 'YYYY-MM-DD'));
+VALUES ('D002', 'RS256',
+        '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiw79j0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
-VALUES ('D003', 'ES256', '-----BEGIN PUBLIC KEY----- MIIBIjANBgahywqu7w0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2024-09-01', 'YYYY-MM-DD'));
+VALUES ('D003', 'ES256',
+        '-----BEGIN PUBLIC KEY----- MIIBIjANBgahywqu7w0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
-VALUES ('D004', 'RS256', '-----BEGIN PUBLIC KEY----- MIIBIjANBgkedvyum0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2026-04-10', 'YYYY-MM-DD'));
+VALUES ('D004', 'RS256',
+        '-----BEGIN PUBLIC KEY----- MIIBIjANBgkedvyum0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
-VALUES ('D005', 'ES256', '-----BEGIN PUBLIC KEY----- MIIBIjANBgkdrkovxw0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2025-09-30', 'YYYY-MM-DD'));
+VALUES ('D005', 'ES256',
+        '-----BEGIN PUBLIC KEY----- MIIBIjANBgkdrkovxw0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
-VALUES ('D006', 'ES256', '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBsrjov4uAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2025-12-11', 'YYYY-MM-DD'));
+VALUES ('D006', 'ES256',
+        '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBsrjov4uAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
-VALUES ('D007', 'RS256', '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAsr7kfIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2025-05-01', 'YYYY-MM-DD'));
+VALUES ('D007', 'RS256',
+        '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAsr7kfIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
-VALUES ('D008', 'ES256', '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhdtkvs0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
-        SYSDATE,TO_DATE('2026-07-21', 'YYYY-MM-DD'));
+VALUES ('D008', 'ES256',
+        '-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhdtkvs0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
+        SYSDATE, ADD_MONTHS(SYSDATE, 12));
 
 --logs
 INSERT INTO logs (device_id, "level", timestamp, message)
