@@ -1,21 +1,24 @@
 -- REGISTRY
 
 INSERT INTO registry (id, name, created_date, type_logs, description)
-VALUES ('R001', 'Group_A', TO_DATE('2024-01-01', 'YYYY-MM-DD'), 'JSON', 'Registry for device group A.');
-
+VALUES ('R001', 'Group_A', SYSDATE, 'JSON', 'Registry for device group A.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
-VALUES ('R002', 'XML_logs', TO_DATE('2023-02-26', 'YYYY-MM-DD'), 'XML', 'Registry for XML-based device logs.');
-
+VALUES ('R002', 'XML_logs', SYSDATE, 'XML', 'Registry for XML-based device logs.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
-VALUES ('R003', 'legacy', TO_DATE('2024-12-21', 'YYYY-MM-DD'), 'plain', 'Registry for legacy systems.');
-
+VALUES ('R003', 'legacy', SYSDATE, 'plain', 'Registry for legacy systems.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
-VALUES ('R004', 'modern', TO_DATE('2025-01-01', 'YYYY-MM-DD'), 'JSON', 'Registry for modern IoT devices.');
-
+VALUES ('R004', 'modern', SYSDATE, 'JSON', 'Registry for modern IoT devices.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
-VALUES ('R005', 'XML_logs', TO_DATE('2024-05-05', 'YYYY-MM-DD'), 'XML', 'Registry for high-volume data ingestion.');
+VALUES ('R005', 'modern', SYSDATE, 'ISON', 'Registry for for modern systems.');
+INSERT INTO registry (id, name, created_date, type_logs, description)
+VALUES ('R006', 'XML_logs', SYSDATE, 'XML', 'Registry for high-volume data ingestion.');
+INSERT INTO registry (id, name, created_date, type_logs, description)
+VALUES ('R007', 'XML_logs', SYSDATE, 'XML', 'Registry for high-volume data ingestion.');
+INSERT INTO registry (id, name, created_date, type_logs, description)
+VALUES ('R008', 'legacy', SYSDATE, 'plain', 'Registry for for legacy system.');
 
 -- DEVICE TYPES
+
 INSERT INTO DEVICE_TYPE(TYPE)
 VALUES ('core');
 INSERT INTO DEVICE_TYPE(TYPE)
@@ -48,20 +51,26 @@ INSERT INTO firmware (device_type, major, minor, patch, released_date, data)
 VALUES ('core', 1, 0, 1, TO_DATE('2024-12-05', 'YYYY-MM-DD'),
         UTL_RAW.CAST_TO_RAW('1f8b080087cdc152cdc928cf2fca49d1e30200dgjsd0000'));
 INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
-VALUES ('pi', 1, 1, 0, TO_DATE('2025-01-05', 'YYYY-MM-DD'),
+VALUES ('pi', 1, 0, 0, TO_DATE('2025-10-12', 'YYYY-MM-DD'),
         UTL_RAW.CAST_TO_RAW('cvmjdj0087cdc1520c9d75128cf2fcc0e000000'));
 INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
-VALUES ('core', 0, 1, 0, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
+VALUES ('core', 0, 1, 0, TO_DATE('2024-08-25', 'YYYY-MM-DD'),
         UTL_RAW.CAST_TO_RAW('63ondl1520003f348cdc9c1e30200d7bbcdfc0e000000'));
 INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
-VALUES ('nrf', 0, 1, 1, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
+VALUES ('nrf', 0, 1, 1, TO_DATE('2024-11-19', 'YYYY-MM-DD'),
         UTL_RAW.CAST_TO_RAW('sukf8b088cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'));
 INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
-VALUES ('nrf', 0, 1, 2, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
+VALUES ('core', 0, 1, 2, TO_DATE('2024-03-15', 'YYYY-MM-DD'),
         UTL_RAW.CAST_TO_RAW('sgtwe1520003f348cdc9c9d75128cf2fca49d1e30200ddfc0e000000'));
 INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
-VALUES ('pi', 0, 1, 2, TO_DATE('2024-11-15', 'YYYY-MM-DD'),
-        UTL_RAW.CAST_TO_RAW('1f8b080087cdc15200hsduieee30200d7bbcdfc0e000000'));
+VALUES ('pi', 2, 1, 2, TO_DATE('2024-11-14', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('giwq887cdc15200hsduieee30200d7bbcdfc0e000000'));
+INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
+VALUES ('pi', 0, 2, 2, TO_DATE('2025-01-15', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('250sflb32d7bbcdfc0e000000'));
+INSERT INTO firmware(device_type, major, minor, patch, released_date, data)
+VALUES ('nrf', 0, 0, 2, TO_DATE('2024-12-27', 'YYYY-MM-DD'),
+        UTL_RAW.CAST_TO_RAW('0dlba30hsduieee30200d7bbcdfc0e000000'));
 
 
 --device_firmware
@@ -81,30 +90,42 @@ VALUES ('D005', 6, TO_DATE('2024-06-15', 'YYYY-MM-DD'), TO_DATE('2024-06-16', 'Y
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
 VALUES ('D004', 4, TO_DATE('2024-11-23', 'YYYY-MM-DD'), TO_DATE('2024-11-23', 'YYYY-MM-DD'), 1, NULL);
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('D008', 6, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-02', 'YYYY-MM-DD'), 1, NULL);
+VALUES ('D008', 6, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-10', 'YYYY-MM-DD'), 1, NULL);
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('D004', 1, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-01', 'YYYY-MM-DD'), 1, NULL);
+VALUES ('D004', 1, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-03', 'YYYY-MM-DD'), 1, NULL);
 
 
 --settings
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('1', '?', 'IoT_Project', 'Registry_A', TO_DATE('2023-01-01', 'YYYY-MM-DD'),
-        TO_DATE('2023-01-02', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'));
+VALUES ('1', '?', 'IoT_Project', 'Registry_A', SYSDATE,
+        TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-01', 'YYYY-MM-DD'));
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('2', '?', 'IoT_Project', 'Registry_B', TO_DATE('2023-02-01', 'YYYY-MM-DD'),
-        TO_DATE('2023-02-02', 'YYYY-MM-DD'), NULL);
+VALUES ('2', '?', 'IoT_Project', 'Registry_B', SYSDATE,
+        NULL, NULL);
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('3', '?', 'IoT_Project', 'Registry_C', TO_DATE('2023-03-01', 'YYYY-MM-DD'), NULL, NULL);
+VALUES ('3', '?', 'IoT_Project', 'Registry_C', SYSDATE, NULL, NULL);
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('4', '?', 'IoT_Project', 'Registry_D', TO_DATE('2023-04-01', 'YYYY-MM-DD'),
-        TO_DATE('2023-04-02', 'YYYY-MM-DD'), TO_DATE('2023-04-03', 'YYYY-MM-DD'));
+VALUES ('4', '?', 'IoT_Project', 'Registry_D', SYSDATE,
+        TO_DATE('2023-04-21', 'YYYY-MM-DD'), TO_DATE('2023-04-21', 'YYYY-MM-DD'));
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('5', '?', 'IoT_Project', 'Registry_E', TO_DATE('2023-05-01', 'YYYY-MM-DD'),
-        TO_DATE('2023-05-02', 'YYYY-MM-DD'), TO_DATE('2023-05-03', 'YYYY-MM-DD'));
+VALUES ('5', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+        TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-10', 'YYYY-MM-DD'));
+
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('6', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+        TO_DATE('2024-05-13', 'YYYY-MM-DD'), TO_DATE('2024-05-14', 'YYYY-MM-DD'));
+
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('7', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+        TO_DATE('2023-11-28', 'YYYY-MM-DD'), TO_DATE('2023-11-30', 'YYYY-MM-DD'));
+
+INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
+VALUES ('8', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+        TO_DATE('2024-12-31', 'YYYY-MM-DD'), TO_DATE('2024-12-31', 'YYYY-MM-DD'));
 
 
 --credential
