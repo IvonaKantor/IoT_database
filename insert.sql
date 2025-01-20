@@ -9,7 +9,7 @@ VALUES ('R003', 'legacy', SYSDATE, 'plain', 'Registry for legacy systems.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
 VALUES ('R004', 'modern', SYSDATE, 'JSON', 'Registry for modern IoT devices.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
-VALUES ('R005', 'modern', SYSDATE, 'ISON', 'Registry for for modern systems.');
+VALUES ('R005', 'modern', SYSDATE, 'JSON', 'Registry for for modern systems.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
 VALUES ('R006', 'XML_logs', SYSDATE, 'XML', 'Registry for high-volume data ingestion.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
@@ -96,34 +96,34 @@ VALUES ('D004', 1, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-03', 'Y
 
 --settings
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('1', '?', 'IoT_Project', 'Registry_A', SYSDATE,
+VALUES ('D001', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
         TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-01', 'YYYY-MM-DD'));
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('2', '?', 'IoT_Project', 'Registry_B', SYSDATE,
+VALUES ('D002', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
         NULL, NULL);
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('3', '?', 'IoT_Project', 'Registry_C', SYSDATE, NULL, NULL);
+VALUES ('D003', 'iot_smarthome.com', 'IoT_Project', 'Kitchen', SYSDATE, NULL, NULL);
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('4', '?', 'IoT_Project', 'Registry_D', SYSDATE,
+VALUES ('D004', 'iot_smarthome.com', 'IoT_Project', 'Kitchen', SYSDATE,
         TO_DATE('2023-04-21', 'YYYY-MM-DD'), TO_DATE('2023-04-21', 'YYYY-MM-DD'));
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('5', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+VALUES ('D005', 'iot_smarthome.com', 'IoT_Project', 'Garden', SYSDATE,
         TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-10', 'YYYY-MM-DD'));
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('6', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+VALUES ('D006', 'iot_smarthome.com', 'IoT_Project', 'FrontDoorA', SYSDATE,
         TO_DATE('2024-05-13', 'YYYY-MM-DD'), TO_DATE('2024-05-14', 'YYYY-MM-DD'));
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('7', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+VALUES ('D007', 'iot_smarthome.com', 'IoT_Project', 'Garden', SYSDATE,
         TO_DATE('2023-11-28', 'YYYY-MM-DD'), TO_DATE('2023-11-30', 'YYYY-MM-DD'));
 
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('8', '?', 'IoT_Project', 'Registry_E', SYSDATE,
+VALUES ('D008', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
         TO_DATE('2024-12-31', 'YYYY-MM-DD'), TO_DATE('2024-12-31', 'YYYY-MM-DD'));
 
 
@@ -261,7 +261,7 @@ VALUES ('D007', 'Humidity Level', '60% - level 3',
         SYSDATE, 'info');
 
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
-VALUES ('D008', 'Firmware Updates Failed', ' Updates to Version 2.2 failed',
+VALUES ('D008', 'Updates Failed', ' Updates to Version 2.2 failed',
         TO_DATE('2024-06-24 18:03:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'error');
 
