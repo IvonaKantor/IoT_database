@@ -153,19 +153,19 @@ VALUES ('D001', 'v1.1.1',
         UTL_RAW.CAST_TO_RAW('1f8b080087cdc1520003f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-02', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'));
 
-INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, acknowledge_date)
-VALUES ('D002', 'v1.1.0', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2024-12-11', 'YYYY-MM-DD'), NULL, NULL);
+INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
+VALUES ('D002', 'v1.1.0', UTL_RAW.CAST_TO_RAW('c9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'), TO_DATE('2024-12-11', 'YYYY-MM-DD'), NULL, NULL);
 
-INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, acknowledge_date)
-VALUES ('D003', 'v2.0,1', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2025-01-01', 'YYYY-MM-DD'),
+INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
+VALUES ('D003', 'v2.0,1', UTL_RAW.CAST_TO_RAW('87cdc15348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'), TO_DATE('2025-01-01', 'YYYY-MM-DD'),
         TO_DATE('2023-03-02', 'YYYY-MM-DD'), NULL);
 
-INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, acknowledge_date)
-VALUES ('D004', 'v2.1.0', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2023-04-01', 'YYYY-MM-DD'),
+INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
+VALUES ('D004', 'v2.1.0', UTL_RAW.CAST_TO_RAW('56798b080087cdc1520003f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'), TO_DATE('2023-04-01', 'YYYY-MM-DD'),
         TO_DATE('2023-04-02', 'YYYY-MM-DD'), TO_DATE('2024-04-03', 'YYYY-MM-DD'));
 
-INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, acknowledge_date)
-VALUES ('D005', 'v3.0.0', UTL_RAW.CAST_TO_RAW('?'), TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
+INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
+VALUES ('D005', 'v3.0.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'), TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
 
 
 --events
@@ -192,7 +192,7 @@ VALUES ('D005', 'Firmware Update', 'Version 2.0 applied',
 
 --meta
 INSERT INTO meta (device_id, key, value)
-VALUES ('1', 'MaxTemp', 85);
+VALUES ('D001', 'MaxTemp', 85);
 
 INSERT INTO meta (device_id, key, value)
 VALUES ('D002', 'MinTemp', 5);
