@@ -188,8 +188,9 @@ INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D005', 'warning', SYSDATE, 'Backup completed');
 
 --configurations
+
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
-VALUES ('D001', 'v1.1.1',
+VALUES ('D001', 'v0.1.1',
         UTL_RAW.CAST_TO_RAW('1f8b080087cdc1520003f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-02', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'));
 
@@ -203,35 +204,67 @@ VALUES ('D003', 'v2.0,1', UTL_RAW.CAST_TO_RAW('87cdc15348cdc9c9d75128cf2fca49d1e
         TO_DATE('2023-03-02', 'YYYY-MM-DD'), NULL);
 
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
-VALUES ('D004', 'v2.1.0', UTL_RAW.CAST_TO_RAW('56798b080087cdc1520003f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
+VALUES ('D004', 'v1.0.1', UTL_RAW.CAST_TO_RAW('56798b080087cdc1520003f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2023-04-01', 'YYYY-MM-DD'),
         TO_DATE('2023-04-02', 'YYYY-MM-DD'), TO_DATE('2024-04-03', 'YYYY-MM-DD'));
 
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
-VALUES ('D005', 'v3.0.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
+VALUES ('D005', 'v2.1.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
+        TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
+
+INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
+VALUES ('D006', 'v2.0.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
+        TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
+
+INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
+VALUES ('D007', 'v2.1.1', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
+        TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
+
+INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
+VALUES ('D008', 'v3.0.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
 
 
 --events
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
-VALUES ('D001', 'Temperature Alert', '85°C', TO_DATE('2023-01-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+VALUES ('D001', 'Temperature Alert', '85°C',
+        TO_DATE('2023-01-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'warning');
 
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
-VALUES ('D002', 'Battery Level', 'Low: 10%', TO_DATE('2023-01-02 08:30:00', 'YYYY-MM-DD HH24:MI:SS'),
+VALUES ('D002', 'Battery Level', 'Low: 10%',
+        TO_DATE('2023-01-02 08:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'info');
 
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
-VALUES ('D003', 'Overheat', 'Critical: 95°C', TO_DATE('2023-01-03 14:20:00', 'YYYY-MM-DD HH24:MI:SS'),
+VALUES ('D003', 'Overheat', 'Critical: 95°C',
+        TO_DATE('2023-01-03 14:20:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'error');
 
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
-VALUES ('D004', 'Connection Lost', 'No signal', TO_DATE('2023-01-04 09:15:00', 'YYYY-MM-DD HH24:MI:SS'),
+VALUES ('D004', 'Connection Lost', 'No signal',
+        TO_DATE('2023-01-04 09:15:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'error');
 
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D005', 'Firmware Update', 'Version 2.0 applied',
-        TO_DATE('2023-01-05 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), SYSDATE, 'info');
+        TO_DATE('2025-01-05 16:45:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'info');
+
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D006', 'Firmware Update', 'Version 2.1 applied',
+        TO_DATE('2023-11-19 19:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'info');
+
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D007', 'Humidity Level', '60% - level 3',
+        TO_DATE('2023-01-05 22:13:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'info');
+
+INSERT INTO events (device_id, name, value, timestamp, created_date, type)
+VALUES ('D008', 'Firmware Updates Failed', ' Updates to Version 2.2 failed',
+        TO_DATE('2024-06-24 18:03:00', 'YYYY-MM-DD HH24:MI:SS'),
+        SYSDATE, 'error');
 
 
 --meta
@@ -249,6 +282,21 @@ VALUES ('D004', 'SignalStrength', 90);
 
 INSERT INTO meta (device_id, key, value)
 VALUES ('D005', 'UpdateInterval', 30);
+
+INSERT INTO meta (device_id, key, value)
+VALUES ('D006', 'Altitude', 250);
+
+INSERT INTO meta (device_id, key, value)
+VALUES ('D007', 'ConnectionStatus', 1);
+
+INSERT INTO meta (device_id, key, value)
+VALUES ('D008', 'Power', 10);
+
+INSERT INTO meta (device_id, key, value)
+VALUES ('D003', 'LightIntensity', 85);
+
+
+
 
 
 
