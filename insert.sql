@@ -81,8 +81,7 @@ VALUES ('D002', 2, TO_DATE('2024-02-01', 'YYYY-MM-DD'), TO_DATE('2024-02-02', 'Y
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
 VALUES ('D001', 3, TO_DATE('2024-03-05', 'YYYY-MM-DD'), TO_DATE('2024-03-06', 'YYYY-MM-DD'), 2, 'Timeout');
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
-VALUES ('D003', 1, TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-11', 'YYYY-MM-DD'), 3,
-        'Failed');
+VALUES ('D003', 1, TO_DATE('2024-04-10', 'YYYY-MM-DD'), TO_DATE('2024-04-11', 'YYYY-MM-DD'), 3,'Failed');
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
 VALUES ('D002', 4, TO_DATE('2024-05-01', 'YYYY-MM-DD'), TO_DATE('2024-05-01', 'YYYY-MM-DD'), 1, NULL);
 INSERT INTO devices_firmware (device_id, firmware_id, started_date, completed_date, attempt, error_message)
