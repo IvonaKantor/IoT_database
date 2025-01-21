@@ -121,7 +121,6 @@ CREATE TABLE configurations
 );
 
 
-
 ALTER TABLE meta
     ADD CONSTRAINT "META_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 ALTER TABLE events
@@ -145,5 +144,10 @@ ALTER TABLE credential
 ALTER TABLE logs
     ADD CONSTRAINT "LOGS_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 
+--constraint check
+ALTER TABLE credential ADD CONSTRAINT "KEY_INTERVAL" CHECK(expired_date > created_date );
+ALTER TABLE firmware ADD CONSTRAINT "VERSION_NOT_ZERO" CHECK((major + minor + patch) <> 0);
+
+--complex unique
 ALTER TABLE firmware
     ADD CONSTRAINT "VERSION_" UNIQUE (major, minor, patch, device_type)
