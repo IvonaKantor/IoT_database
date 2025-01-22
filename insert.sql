@@ -1,5 +1,4 @@
--- REGISTRY
-
+-- registry
 INSERT INTO registry (id, name, created_date, type_logs, description)
 VALUES ('R001', 'Group_A', SYSDATE, 'JSON', 'Registry for device group A.');
 INSERT INTO registry (id, name, created_date, type_logs, description)
@@ -17,8 +16,7 @@ VALUES ('R007', 'XML_logs', SYSDATE, 'XML', 'Registry for high-volume data inges
 INSERT INTO registry (id, name, created_date, type_logs, description)
 VALUES ('R008', 'legacy', SYSDATE, 'plain', 'Registry for for legacy system.');
 
--- DEVICE TYPES
-
+-- device types
 INSERT INTO DEVICE_TYPE(TYPE)
 VALUES ('core');
 INSERT INTO DEVICE_TYPE(TYPE)
@@ -26,8 +24,7 @@ VALUES ('pi');
 INSERT INTO DEVICE_TYPE(TYPE)
 VALUES ('nrf');
 
--- DEVICES
-
+-- devices
 INSERT INTO devices (id, registry_id, device_type, device_name, status, last_updating, serial_number, location)
 VALUES ('D001', 'R001', 'pi', 'TempSensor', 'active', TO_DATE('2025-01-01', 'YYYY-MM-DD'), 'SN001', 'Warehouse');
 INSERT INTO devices (id, registry_id, device_type, device_name, status, last_updating, serial_number, location)
@@ -98,30 +95,22 @@ VALUES ('D004', 1, TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-03', 'Y
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
 VALUES ('D001', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
         TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-01', 'YYYY-MM-DD'));
-
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
-VALUES ('D002', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
-        NULL, NULL);
-
+VALUES ('D002', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE, NULL, NULL);
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
 VALUES ('D003', 'iot_smarthome.com', 'IoT_Project', 'Kitchen', SYSDATE, NULL, NULL);
-
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
 VALUES ('D004', 'iot_smarthome.com', 'IoT_Project', 'Kitchen', SYSDATE,
         TO_DATE('2023-04-21', 'YYYY-MM-DD'), TO_DATE('2023-04-21', 'YYYY-MM-DD'));
-
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
 VALUES ('D005', 'iot_smarthome.com', 'IoT_Project', 'Garden', SYSDATE,
         TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-10', 'YYYY-MM-DD'));
-
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
 VALUES ('D006', 'iot_smarthome.com', 'IoT_Project', 'FrontDoorA', SYSDATE,
         TO_DATE('2024-05-13', 'YYYY-MM-DD'), TO_DATE('2024-05-14', 'YYYY-MM-DD'));
-
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
 VALUES ('D007', 'iot_smarthome.com', 'IoT_Project', 'Garden', SYSDATE,
         TO_DATE('2023-11-28', 'YYYY-MM-DD'), TO_DATE('2023-11-30', 'YYYY-MM-DD'));
-
 INSERT INTO settings (device_id, host_name, project, registry, created_date, acknowledge_date, accepted_date)
 VALUES ('D008', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
         TO_DATE('2024-12-31', 'YYYY-MM-DD'), TO_DATE('2024-12-31', 'YYYY-MM-DD'));
@@ -131,31 +120,24 @@ VALUES ('D008', 'iot_smarthome.com', 'IoT_Project', 'Lounge', SYSDATE,
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D001', 'ES256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
-
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D002', 'RS256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiw79j0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
-
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D003', 'ES256','-----BEGIN PUBLIC KEY----- MIIBIjANBgahywqu7w0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
-
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D004', 'RS256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkedvyum0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
-
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D005', 'ES256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkdrkovxw0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
-
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D006', 'ES256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBsrjov4uAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
-
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D007', 'RS256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAsr7kfIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
-
 INSERT INTO credential (device_id, type, public_key, created_date, expired_date)
 VALUES ('D008', 'ES256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhdtkvs0BAQEFAAOCAQ8AMIIBCgKCAQEAsHQWBhHaxpYY+R/1rscY CAzAn/FUonnoc7ZU4UcKgCgNXOgMIXJTL5CJusCUIc4nSVkqgxcv9xbkGnOLTa55 eONI5UIuDaTK+daJnqisl829hII38wep0mKLVGIog5LB/pPxogck88Q+KFf0uiwV B4eGQSGaNbbCQDB+toxT0Z+PfxZeHE+aiDl6nJ6U6DJHD+a3N03/FVCBTF0Yrtuk hX/+RNhuAEmsRyCJLjNlGLNSkOI4bnbJQ8EN36jSrm8grCQEz15BBHjACg/q/ueD a+374oKjlXdMIKzcY2/7IVnlVlMzpClSR5TXvoie3U/oWxvWN/0yfqapUKgKqhbN 8wIDAQAB -----END PUBLIC KEY----- ',
         SYSDATE, ADD_MONTHS(SYSDATE, 12));
@@ -164,61 +146,46 @@ VALUES ('D008', 'ES256','-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhdtkvs0BAQEFAAOC
 --logs
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D001', 'info', SYSDATE, 'System start');
-
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D002', 'debug', SYSDATE, 'Connection established');
-
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D003', 'warning', SYSDATE, 'High memory usage');
-
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D004', 'error', SYSDATE, 'Disk failure');
-
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D005', 'debug', SYSDATE, 'Backup completed');
-
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D005', 'info', SYSDATE, 'System start');
-
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D005', 'info', SYSDATE, 'Finished successful');
-
 INSERT INTO logs (device_id, "level", timestamp, message)
 VALUES ('D005', 'warning', SYSDATE, 'Backup completed');
 
 --configurations
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D001', 'v0.1.1',
         UTL_RAW.CAST_TO_RAW('1f8b080087cdc1520003f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2023-01-02', 'YYYY-MM-DD'), TO_DATE('2023-01-03', 'YYYY-MM-DD'));
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D002', 'v1.1.0', UTL_RAW.CAST_TO_RAW('c9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2024-12-11', 'YYYY-MM-DD'), NULL, NULL);
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D003', 'v2.0,1', UTL_RAW.CAST_TO_RAW('87cdc15348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2025-01-01', 'YYYY-MM-DD'),
         TO_DATE('2023-03-02', 'YYYY-MM-DD'), NULL);
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D004', 'v1.0.1', UTL_RAW.CAST_TO_RAW('56798b080087cdc1520003f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2023-04-01', 'YYYY-MM-DD'),
         TO_DATE('2023-04-02', 'YYYY-MM-DD'), TO_DATE('2024-04-03', 'YYYY-MM-DD'));
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D005', 'v2.1.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D006', 'v2.0.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D007', 'v2.1.1', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
-
 INSERT INTO configurations (device_id, version, data, created_date, acknowledge_date, accepted_date)
 VALUES ('D008', 'v3.0.0', UTL_RAW.CAST_TO_RAW('y3f348cdc9c9d75128cf2fca49d1e30200d7bbcdfc0e000000'),
         TO_DATE('2024-05-01', 'YYYY-MM-DD'), NULL, NULL);
@@ -229,37 +196,30 @@ INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D001', 'Temperature Alert', '85°C',
         TO_DATE('2023-01-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'warning');
-
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D002', 'Battery Level', 'Low: 10%',
         TO_DATE('2023-01-02 08:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'info');
-
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D003', 'Overheat', 'Critical: 95°C',
         TO_DATE('2023-01-03 14:20:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'error');
-
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D004', 'Connection Lost', 'No signal',
         TO_DATE('2023-01-04 09:15:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'error');
-
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D005', 'Firmware Update', 'Version 2.0 applied',
         TO_DATE('2025-01-05 16:45:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'info');
-
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D006', 'Firmware Update', 'Version 2.1 applied',
         TO_DATE('2023-11-19 19:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'info');
-
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D007', 'Humidity Level', '60% - level 3',
         TO_DATE('2023-01-05 22:13:00', 'YYYY-MM-DD HH24:MI:SS'),
         SYSDATE, 'info');
-
 INSERT INTO events (device_id, name, value, timestamp, created_date, type)
 VALUES ('D008', 'Updates Failed', ' Updates to Version 2.2 failed',
         TO_DATE('2024-06-24 18:03:00', 'YYYY-MM-DD HH24:MI:SS'),
@@ -269,28 +229,20 @@ VALUES ('D008', 'Updates Failed', ' Updates to Version 2.2 failed',
 --meta
 INSERT INTO meta (device_id, key, value)
 VALUES ('D001', 'MaxTemp', 85);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D002', 'MinTemp', 5);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D003', 'BatteryLife', 80);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D004', 'SignalStrength', 90);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D005', 'UpdateInterval', 30);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D006', 'Altitude', 250);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D007', 'ConnectionStatus', 1);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D008', 'Power', 10);
-
 INSERT INTO meta (device_id, key, value)
 VALUES ('D003', 'LightIntensity', 85);
 
