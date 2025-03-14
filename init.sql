@@ -22,7 +22,10 @@ GRANT ALL PRIVILEGES TO IWONA2;
 -- GRANT DBA TO iot_user;
 
 -- 7. Check the status of a new database
-SELECT name, open_mode FROM v$pdbs WHERE name = 'IOT';
+SELECT name, open_mode
+FROM v$pdbs
+WHERE name = 'IOT';
 
-SELECT name, pdb FROM v$services;
+SELECT name, pdb
+FROM v$services;
 
