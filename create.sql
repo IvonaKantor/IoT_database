@@ -145,8 +145,10 @@ ALTER TABLE logs
     ADD CONSTRAINT "LOGS_DEVICES_FK" FOREIGN KEY (device_id) REFERENCES devices (id);
 
 --constraint check
-ALTER TABLE credential ADD CONSTRAINT "KEY_INTERVAL" CHECK(expired_date > created_date );
-ALTER TABLE firmware ADD CONSTRAINT "VERSION_NOT_ZERO" CHECK((major + minor + patch) <> 0);
+ALTER TABLE credential
+    ADD CONSTRAINT "KEY_INTERVAL" CHECK (expired_date > created_date );
+ALTER TABLE firmware
+    ADD CONSTRAINT "VERSION_NOT_ZERO" CHECK ((major + minor + patch) <> 0);
 
 --complex unique
 ALTER TABLE firmware
